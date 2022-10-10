@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: rosybrown;
+    color: black
+}
+
+.new-tasks {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-tasks-form {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.new-task-add {
+    padding: 5px 5px;
+    width: 300px;  
+}
+
+.new-task-submit {
+    padding: 5px 5px;
+    cursor: pointer 
+}
+
+.task-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tasks {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.task-list-content {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.task-list-input {
+    display: flex;
+    padding: 5px 5px;
+    width: 300px;
+}
+
+.task-list-edit, .task-list-delete{
+    padding: 5px 5px;
+    cursor: pointer;
+}
