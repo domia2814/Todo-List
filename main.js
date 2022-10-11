@@ -1,6 +1,6 @@
 const form = document.querySelector('.new-tasks-form')
 const input = document.querySelector('.new-task-add')
-const listEl = document.querySelector('.tasks')
+const taskList = document.querySelector('.tasks')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ form.addEventListener('submit', (e) => {
     const taskEl = document.createElement("div")
     taskEl.classList.add("task-list-content")
 
-    listEl.appendChild(taskEl)
+    taskList.appendChild(taskEl)
 
     const taskInput = document.createElement("input")
     taskInput.classList.add("task-list-input")
@@ -49,7 +49,7 @@ form.addEventListener('submit', (e) => {
     })
 
     taskButton2.addEventListener('click', () => {
-        listEl.removeChild(taskEl)
+        taskList.removeChild(taskEl)
      })
 
 })
