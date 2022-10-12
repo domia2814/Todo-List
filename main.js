@@ -1,71 +1,64 @@
 const form = document.querySelector('.new-tasks-form')
-const inputUser = document.querySelector('.new-task-add')
+const inputByUser = document.querySelector('.new-task-add')
 const tasksList = document.querySelector('.tasks')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const taskName = inputUser.value
-    if(!taskName) {
+    const task = inputByUser.value
+    if(!task) {
         alert("Proszę wypełnić pole ")
     } else {
         console.log("Success")
-        addTaskToList()
+        createTasksInputs()
     }
 })
 
-function addTaskToList() {
-    const taskContent = document.createElement("div")
-    taskContent.classList.add("task-list-content")
+    function createTasksInputs() {
+    const tasksElements = document.createElement("div")
+    tasksElements.classList.add("task-list-content")
 
-    const input = createTaskInput()
+    const input = createInput()
 
-    taskContent.appendChild(input)
+    tasksList.appendChild(tasksElements)
+    tasksElements.appendChild(input)
+    tasksElements.appendChild(createButton1(input))
+    tasksElements.appendChild(createButton2(tasksElements))
+    }
 
-    taskContent.appendChild(createTaskButtonEdit(input))
+    function createInput() { 
+    const taskInput = document.createElement("input")
+    taskInput.classList.add("task-list-input")
+    taskInput.type = "text"
+    taskInput.value = inputByUser.value
+    taskInput.setAttribute("readonly", "readonly")
+    return taskInput
+    }
+    
+    function createButton1(input) {
+    const taskButton = document.createElement("button")
+    taskButton.classList.add("task-list-edit")
+    taskButton.innerHTML = "Edytuj"
 
-    taskContent.appendChild(createTaskButtonRemove(taskContent))
-
-    tasksList.appendChild(taskContent)
-}
-
-function createTaskInput() {
-    let input = document.createElement("input")
-    input.classList.add("task-list-input")
-    input.type = "text"
-    input.value = inputUser.value
-    input.setAttribute("readonly", "readonly")
-    return input;
-}
-
-function createTaskButtonEdit(input) {
-    let button = document.createElement("button")
-    button.classList.add("task-list-edit")
-    button.innerHTML = "Edytuj"
-
-    button.addEventListener('click', () => {
-        if(button.innerText == "Edytuj") {
+    taskButton.addEventListener('click', () => {
+        if(taskButton.innerText == "Edytuj") {
          input.removeAttribute("readonly")
          input.focus()
-         button.innerText = "Save"
+         taskButton.innerText = "Save"
         } else {
          input.setAttribute("readonly", "readonly")
-         button.innerText = "Edytuj"
+         taskButton.innerText = "Edytuj"
         }
- 
      })
+     return taskButton
+    }
+   
+    function createButton2(tasksElements){
+    const taskButton2 = document.createElement("button")
+    taskButton2.classList.add("task-list-delete")
+    taskButton2.innerHTML = "Usuń"
 
-     return button
+    taskButton2.addEventListener('click', () => {
+        tasksList.removeChild(tasksElements)
+     })
+     return taskButton2
 }
-
-function createTaskButtonRemove(taskContent) {
-    let button = document.createElement("button")
-    button.classList.add("task-list-delete")
-    button.innerHTML = "Usuń"
-
-    button.addEventListener('click', () => {
-        tasksList.removeChild(taskContent)
-    })
-
-    return button
-}
-//komentarz próba
